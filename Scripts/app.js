@@ -15,22 +15,18 @@ class Deck {
     return [hand1, hand2];
   }
   
-  //Fisher-Yates Shuffle Algorithm
   shuffle() {
-    const deck = this.deck;
-    let n = deck.length;
-    let i;
-    while (n) {
-      i = Math.floor(Math.random() * n--);
-      [deck[n], deck[i]] = [deck[i], deck[n]];
-    }
-    return this;
+    let [hand1, hand2] = this.splitDeck()
+    hand1.sort(() => 0.5 - Math.random())
+    hand2.sort(() => 0.5 - Math.random())
+    return [hand1, hand2]
   }
 
   //pops a value off of the array and returns it to the user
   deal() {
     return this.deck.pop();
   }
+  
   //Resets deck for fair reshuffling
   reset() {
     this.deck = [];
