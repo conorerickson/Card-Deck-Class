@@ -22,6 +22,19 @@ class Deck {
     return [hand1, hand2]
   }
 
+  //Fisher-Yates Shuffle Algorithm
+  shuffleAll() {
+    const deck = splitDeck();
+    let n = deck.length;
+    let i;
+    while (n) {
+      i = Math.floor(Math.random() * n--);
+      [deck[n], deck[i]] = [deck[i], deck[n]];
+    }
+    return this;
+  }
+  
+
   //pops a value off of the array and returns it to the user
   deal() {
     return this.deck.pop();
